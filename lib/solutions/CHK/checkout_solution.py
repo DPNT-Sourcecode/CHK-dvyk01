@@ -25,5 +25,3 @@ class CheckoutSolution:
             else:
                 total += qty * price_item
         return total
-
-
