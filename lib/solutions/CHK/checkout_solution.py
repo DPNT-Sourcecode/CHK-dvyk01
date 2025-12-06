@@ -5,7 +5,7 @@ class CheckoutSolution:
     # skus = unicode string
     def checkout(self, skus:str) -> int:
         price = {
-            "A": 50, "B": 30, "C": 20, "D": 15, "E": 40
+            "A": 50, "B": 30, "C": 20, "D": 15, "E": 40,
         }
         offers = {
             "A":[
@@ -37,7 +37,7 @@ class CheckoutSolution:
         for item, qty in payable.items():
             price_item = price[item]
             bundles = offers.get(item, [])
-            if not offers:
+            if not bundles:
                 total += qty * price_item
                 continue
             bundles_sort = sorted(bundles, key=lambda x: x["qty"], reverse=True)
@@ -52,3 +52,4 @@ class CheckoutSolution:
             if remaining > 0:
                 total += remaining * price_item
         return total
+
