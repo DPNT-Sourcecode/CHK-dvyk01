@@ -3,4 +3,8 @@ class CheckoutSolution:
 
     # skus = unicode string
     def checkout(self, skus):
-        raise NotImplementedError()
+        price = {
+            "A": 50, "B": 30, "C": 15
+        }
+
+        
