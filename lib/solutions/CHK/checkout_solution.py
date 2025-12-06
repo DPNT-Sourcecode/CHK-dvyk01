@@ -40,9 +40,11 @@ class CheckoutSolution:
             if not offers:
                 total += qty * price_item
                 continue
-            bundles_sort = sorted(bundles, key=lambda x: x["qty"])
+            bundles_sort = sorted(bundles, key=lambda x: x["qty"], reverse=True)
+            print(bundles_sort)
             remaining = qty
             for bundle in bundles_sort:
+                print(bundle)
                 bundle_qty = bundle["qty"]
                 bundle_price = bundle["price"]
                 num_bundle = remaining // bundle_qty
