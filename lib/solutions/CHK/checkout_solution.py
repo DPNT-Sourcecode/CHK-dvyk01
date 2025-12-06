@@ -4,11 +4,11 @@ class CheckoutSolution:
     # skus = unicode string
     def checkout(self, skus:str) -> int:
         price = {
-            "A": 50, "B": 30, "C": 15
+            "A": 50, "B": 30, "C": 20, "D": 15
         }
         offers = {"A": (3,130), "B": (2,45)}
 
-        counts = {"A": 0, "B": 0, "C": 0}
+        counts = {"A": 0, "B": 0, "C": 0, "D": 0}
         for sku in skus:
             counts[sku] += 1
 
@@ -23,3 +23,4 @@ class CheckoutSolution:
             else:
                 total += qty * price_item
         return total
+
