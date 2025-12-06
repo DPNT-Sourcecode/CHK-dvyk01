@@ -19,7 +19,7 @@ class CheckoutSolution:
                 {"qty": 10, "price": 80},
                 {"qty": 5, "price": 45}
             ],
-            "K": [{"qty": 2, "price": 150}],
+            "K": [{"qty": 2, "price": 120}],
             "P": [{"qty": 5, "price": 200}],
             "Q": [{"qty": 3, "price": 80}],
             "V": [
@@ -54,6 +54,9 @@ class CheckoutSolution:
                 payable[free] = max(0, payable[free] - total_free)
 
         total = 0
+        group_skus = ["S", "T", "X", "Y", "Z"]
+        total_groups_items = sum(payable[sku] for sku in group_skus)
+
         for item, qty in payable.items():
             price_item = price[item]
             bundles = offers.get(item, [])
@@ -72,3 +75,4 @@ class CheckoutSolution:
             if remaining > 0:
                 total += remaining * price_item
         return total
+
