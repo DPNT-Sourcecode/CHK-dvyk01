@@ -34,7 +34,7 @@ class CheckoutSolution:
             {"trigger_item": "R", "free_item": "Q", "trigger_qty": 3, "free_qty": 1},
             {"trigger_item": "U", "free_item": "U", "trigger_qty": 4, "free_qty": 1}
         ]
-        counts = {"A": 0, "B": 0, "C": 0, "D": 0, "E": 0, "F": 0}
+        counts = {k: 0 for k in price.keys()}
         if skus is None: return -1
         for sku in skus:
             if sku not in price:
@@ -72,6 +72,3 @@ class CheckoutSolution:
             if remaining > 0:
                 total += remaining * price_item
         return total
-
-
-
