@@ -22,3 +22,4 @@ class CheckoutSolution:
                 total += packs * offer_price + remainder * price
             else:
                 total += qty * price
+        return total
