@@ -6,8 +6,8 @@ class CheckoutSolution:
     def checkout(self, skus:str) -> int:
         price = {
             "A": 50, "B": 30, "C": 20, "D": 15, "E": 40, "F": 10, "G": 20, "H": 10, "I": 35,
-            "J": 60, "K": 80, "L": 90, "M": 15, "N": 40, "O": 10, "P": 50, "Q": 30, "R": 50,
-            "S": 30, "T": 20, "U": 40, "V": 50, "W": 20, "X": 90, "Y": 10, "Z": 50
+            "J": 60, "K": 70, "L": 90, "M": 15, "N": 40, "O": 10, "P": 50, "Q": 30, "R": 50,
+            "S": 20, "T": 20, "U": 40, "V": 50, "W": 20, "X": 17, "Y": 20, "Z": 21
         }
         offers = {
             "A":[
@@ -55,7 +55,17 @@ class CheckoutSolution:
 
         total = 0
         group_skus = ["S", "T", "X", "Y", "Z"]
-        total_groups_items = sum(payable[sku] for sku in group_skus)
+        total_group_items = sum(payable[sku] for sku in group_skus)
+        groups = total_group_items // 3
+        if groups > 0:
+            total += groups * 45
+            to_remove = groups * 3
+            group_order = sorted(group_skus, key=lambda x: price[x], reverse=True)
+            for s in group_order:
+                if to_remove == 0: break
+                take = min(payable.get(s, 0), to_remove)
+                payable[s] -= take
+                to_remove -= take
 
         for item, qty in payable.items():
             price_item = price[item]
@@ -75,4 +85,5 @@ class CheckoutSolution:
             if remaining > 0:
                 total += remaining * price_item
         return total
+
 
