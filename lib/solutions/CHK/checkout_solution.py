@@ -14,12 +14,12 @@ class CheckoutSolution:
 
         total = 0
         for item, qty in counts.items():
-            price = price[item]
+            price_item = price[item]
             if item in offers:
                 offer_qty, offer_price = offers[item]
                 packs = qty // offer_qty
                 remainder = qty % offer_qty
-                total += packs * offer_price + remainder * price
+                total += packs * offer_price + remainder * price_item
             else:
-                total += qty * price
+                total += qty * price_item
         return total
