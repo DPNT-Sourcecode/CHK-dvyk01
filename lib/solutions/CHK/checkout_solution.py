@@ -5,17 +5,34 @@ class CheckoutSolution:
     # skus = unicode string
     def checkout(self, skus:str) -> int:
         price = {
-            "A": 50, "B": 30, "C": 20, "D": 15, "E": 40, "F": 10
+            "A": 50, "B": 30, "C": 20, "D": 15, "E": 40, "F": 10, "G": 20, "H": 10, "I": 35,
+            "J": 60, "K": 80, "L": 90, "M": 15, "N": 40, "O": 10, "P": 50, "Q": 30, "R": 50,
+            "S": 30, "T": 20, "U": 40, "V": 50, "W": 20, "X": 90, "Y": 10, "Z": 50
         }
         offers = {
             "A":[
                 {"qty": 5, "price": 200},
                 {"qty": 3, "price": 130}
             ],
-            "B": [{"qty": 2, "price": 45}]}
+            "B": [{"qty": 2, "price": 45}],
+            "H": [
+                {"qty": 10, "price": 80},
+                {"qty": 5, "price": 45}
+            ],
+            "K": [{"qty": 2, "price": 150}],
+            "P": [{"qty": 5, "price": 200}],
+            "Q": [{"qty": 3, "price": 80}],
+            "V": [
+                {"qty": 3, "price": 130},
+                {"qty": 2, "price": 90}
+            ]
+        }
         free_items = [
             {"trigger_item": "E", "free_item": "B", "trigger_qty": 2, "free_qty": 1},
             {"trigger_item": "F", "free_item": "F", "trigger_qty": 3, "free_qty": 1},
+            {"trigger_item": "N", "free_item": "M", "trigger_qty": 3, "free_qty": 1},
+            {"trigger_item": "R", "free_item": "Q", "trigger_qty": 3, "free_qty": 1},
+            {"trigger_item": "U", "free_item": "U", "trigger_qty": 4, "free_qty": 1}
         ]
         counts = {"A": 0, "B": 0, "C": 0, "D": 0, "E": 0, "F": 0}
         if skus is None: return -1
@@ -55,5 +72,6 @@ class CheckoutSolution:
             if remaining > 0:
                 total += remaining * price_item
         return total
+
 
 
