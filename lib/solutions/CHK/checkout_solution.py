@@ -10,6 +10,8 @@ class CheckoutSolution:
 
         counts = {"A": 0, "B": 0, "C": 0, "D": 0}
         for sku in skus:
+            if sku not in price:
+                return -1
             counts[sku] += 1
 
         total = 0
@@ -23,4 +25,5 @@ class CheckoutSolution:
             else:
                 total += qty * price_item
         return total
+
 
