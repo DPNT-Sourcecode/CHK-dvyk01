@@ -14,7 +14,7 @@ class CheckoutSolution:
             ],
             "B": [{"qty": 2, "price": 45}]}
         free_items = [ {"trigger_item": "E", "free_item": "B", "trigger_qty": 2, "free_qty": 1}]
-        counts = {"A": 0, "B": 0, "C": 0, "D": 0}
+        counts = {"A": 0, "B": 0, "C": 0, "D": 0, "E": 0}
         if skus is None: return -1
         for sku in skus:
             if sku not in price:
@@ -40,7 +40,7 @@ class CheckoutSolution:
             if not offers:
                 total += qty * price_item
                 continue
-            bundles_sort = sorted(bundles, key=lambda x: x["qty"], reverse=True)
+            bundles_sort = sorted(bundles, key=lambda x: x["qty"])
             remaining = qty
             for bundle in bundles_sort:
                 bundle_qty = bundle["qty"]
