@@ -11,5 +11,14 @@ class CheckoutSolution:
         counts = {"A": 0, "B": 0, "C": 0}
         for sku in skus:
             counts[sku] += 1
+
+        total = 0
         for item, qty in counts.items():
-            
+            price = price[item]
+            if item in offers:
+                offer_qty, offer_price = offers[item]
+                packs = qty // offer_qty
+                remainder = qty % offer_qty
+                total += packs * offer_price + remainder * price
+            else:
+                total += qty * price
