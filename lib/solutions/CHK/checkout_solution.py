@@ -5,7 +5,7 @@ class CheckoutSolution:
     # skus = unicode string
     def checkout(self, skus:str) -> int:
         price = {
-            "A": 50, "B": 30, "C": 20, "D": 15, "E": 40,
+            "A": 50, "B": 30, "C": 20, "D": 15, "E": 40, "F": 10
         }
         offers = {
             "A":[
@@ -13,8 +13,11 @@ class CheckoutSolution:
                 {"qty": 3, "price": 130}
             ],
             "B": [{"qty": 2, "price": 45}]}
-        free_items = [ {"trigger_item": "E", "free_item": "B", "trigger_qty": 2, "free_qty": 1}]
-        counts = {"A": 0, "B": 0, "C": 0, "D": 0, "E": 0}
+        free_items = [
+            {"trigger_item": "E", "free_item": "B", "trigger_qty": 2, "free_qty": 1},
+            {"trigger_item": "F", "free_item": "F", "trigger_qty": 3, "free_qty": 1},
+        ]
+        counts = {"A": 0, "B": 0, "C": 0, "D": 0, "E": 0, "F": 0}
         if skus is None: return -1
         for sku in skus:
             if sku not in price:
@@ -52,4 +55,5 @@ class CheckoutSolution:
             if remaining > 0:
                 total += remaining * price_item
         return total
+
 
